@@ -4,17 +4,17 @@ SamsungTV
 
 ## Installation
 
-Let's say that your TV is on your local network and its IP is 192.168.1.32.
+Let's say that your TV is on your local network and its IP is 192.168.1.XX.
 Launch this command to send an erroneous command to your SamsungTV:
 
 ```bash
-./samsungTV.py -ip=192.168.1.32
+./samsungTV.py -ip=192.168.1.XX
 ```
 
 You will get the following output:
 
 ```bash
-Launching connection to TV 192.168.1.32:
+Launching connection to TV 192.168.1.XX:
  - port: 8002
  - application name: SAMSUNG_TV
  - key: POWER
@@ -80,8 +80,8 @@ _In fact, I always use this dummy payload in all my command but as it is not alw
 * Save.
 * You are ready to test it.
 
-Why I use the wakeonlan and not my script ?
-When the TV is shut down for too long it seems to stop listenning for this script command.
+### Why I recommend to use a wakeonlan command and not this script ?
+When the TV is switched off for too long it seems to stop listening to this script command.
 
-Why I don't use the wakeonlan virtual hardware in domoticz ?
-Because I want to have only one device for doing the on AND the off command.
+### Why I don't use the wakeonlan virtual hardware in domoticz ?
+I prefer to have only one device for doing the on AND the off command. But feel free to use whatever you want in domoticz.
