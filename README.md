@@ -1,6 +1,9 @@
 # SamsungTV
-SamsungTV
 
+This repo is intended to store the script I am using since almost 1 year to send key to my very capricious TV.
+I found a lot of information on internet about communication with SamsungTV, but the majority seems to be not really accurate for my model.
+
+Hope it may helps another fellow owner of: QE55Q67
 
 ## Installation
 
