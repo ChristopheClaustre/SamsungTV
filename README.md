@@ -18,23 +18,47 @@ Launching connection to TV 192.168.1.32:
  - port: 8002
  - application name: SAMSUNG_TV
  - key: POWER
-{"data":{"clients":[{"attributes":{"name":"U0FNU1VOR19UVg==","token":"00000000"},"connectTime":1645309247745,"deviceName":"U0FNU1VOR19UVg==","id":"8044617c-f7b2-48ab-aec8-87b4e5959e8e","isHost":false}],"id":"8044617c-f7b2-48ab-aec8-87b4e5959e8e","token":"81194442"},"event":"ms.channel.connect"}
+{ ANSWER FROM TV }
+```
+_You may need to accept some dialog box on the TV. Watch for it._
+
+And the JSON answer from TV has following format:
+```
+{
+ "data":{
+  "clients":[
+    {
+     "attributes":
+      {
+       "name":"...",
+       "token":""
+      },
+     "connectTime":...,
+     "deviceName":"...",
+     "id":"...",
+     "isHost":...
+    }
+   ],
+   "id":"...",
+   "token":"81194442"
+  },
+ "event":"ms.channel.connect"
+}
 ```
 
-You can see, that there is key named "token" and the associated value in this case is "81194442".
-This token make you identified by your TV. You may need to accept some dialog box on the TV. Watch for it.
+You can see that there is two keys named "token". The first one represents the token found in your request, as you didn't provided any token the associated value is empty. The second one has a value in this case of "81194442" and represents the token that the TV associated to you and that you must use for following conversation.
 
-When you add done this part you are now able to send command.
+When you have done this part, you are now able to send commands.
 
 For example to shutdown your TV, you can send:
 ```
-./samsungTV.py -ip=192.168.1.32 -k=POWER -t=81194442
+./samsungTV.py -ip=192.168.1.XX -k=POWER -t=81194442
 ```
 
 ## Dummy parameter
 
 Sometimes your TV don't like to be awaken by a surprised command.
-Your TV may not respond to the first command sent but will gladly answer to the following command for few minutes without any problems.
+Your TV may not respond to the first command sent but will gladly answer to the following commands for a few minutes.
 
 For this, you can append to your command the parameter: `-dummy`.
 It sends a dummy command before sending your actual command.
@@ -51,8 +75,8 @@ _In fact, I always use this dummy payload in all my command but as it is not alw
 * Add a "Switch" kind of device.
 * Go to "Switches".
 * Edit your new "device".
-* In "On", put something like: `script://wakeonlan.sh 00:00:00:00:00:00` (put the mac address of your TV).
-* In "Off", put something like: `script://SamsungTV/samsungTV.py -ip=192.168.1.20 -k=POWER -t=81194442 -dummy`.
+* In "On", put something like: `script://wakeonlan.sh XX:XX:XX:XX:XX:XX` (put the mac address of your TV).
+* In "Off", put something like: `script://SamsungTV/samsungTV.py -ip=192.168.1.XX -k=POWER -t=81194442 -dummy`.
 * Save.
 * You are ready to test it.
 
